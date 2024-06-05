@@ -9,25 +9,27 @@
 <body>
     <div class="main">
         <div>
-            <div id="name">Student Name: Ali</div>
+            <div id="name">Student Name: <script>document.write(localStorage.getItem("n"))</script></div>
             <div class="users">
                 <div id="time">1:45</div>
                 <div id="score">Score: 0 / 5</div>
             </div>
         </div>
         <div>
-            <p id="question">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, qui?</p>
+            <p id="question"></p>
         </div>
         <div>
-            <p id="answers" name=" op1">A.Lorem ipsum dolor sit amet.</p>
-            <p id="answers" name=" op2">B.Lorem ipsum dolor sit amet.</p>
-            <p id="answers" name=" op3">C.Lorem ipsum dolor sit amet.</p>
-            <p id="answers" name=" op4">D.Lorem ipsum dolor sit amet.</p>
+            <p class="answers" id="op1">A.</p>
+            <p class="answers" id="op2">B.</p>
+            <p class="answers" id="op3">C.</p>
+            <p class="answers" id="op4">D.</p>
         </div>
         <div id="btn">
             <p class="Qnum">0 out of 5 questions</p>
-            <button id="next-btn" class="buttons-arounder">Next</button>
+            <button onclick="nextBtn()" id="next-btn" disabled class="buttons-arounder">Next</button>
         </div>
     </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
