@@ -3,34 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Multiple User SignUp</title>
 </head>
 <body>
-    <div class="main">
-        <div>
-            <div id="name">Student Name: <script>document.write(localStorage.getItem("n"))</script></div>
-            <div class="users">
-                <div> <span id="min">0</span>: <span id="sec">00</span></div>
-                <div>Score: <span style="background-color: #CA8787; font-size: 25px; color: black;" id="score">0</span> / 7</div>
+
+    <div class="container">
+        <div class="formbox">
+            <h1 id="title">SignUp</h1>
+            <div class="input-group">
+
+                <div class="input-field" id="namefield">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" placeholder="Name" id="sname">
+                </div>
+
+                <div class="input-field">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" placeholder="Email" id="semail">
+                </div>
+
+                <div class="input-field">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" placeholder="Password" id="spass">
+                </div>
+                <p>Forgot password <a href="#">Click Here!</a></p>
             </div>
-        </div>
-        <div>
-            <p id="question"></p>
-        </div>
-        <div onclick="clk()">
-            <button class="answers" id="op1">A.</button>
-            <button class="answers" id="op2">B.</button>
-            <button class="answers" id="op3">C.</button>
-            <button class="answers" id="op4">D.</button>
-        </div>
-        <div id="btn">
-            <p class="Qnum"> <span id="addQNo">0</span> out of <span id="qlen"></span> questions</p>
-            <button onclick="nextBtn()" id="next-btn" disabled class="buttons-arounder">Next</button>
+
+            <div class="btns">
+                <button onclick="signup()" id="signupbtn">SignUp</button>
+                <button onclick="signin()" id="signinbtn" class="disab">SignIn</button>
+            </div>
+
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="app1.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
