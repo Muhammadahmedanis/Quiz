@@ -64,13 +64,37 @@ function signin() {
 
     location.href = "index.html";
 
+    var time = document.getElementById('min');
+    var time2 = document.getElementById('sec');
+    var min = 0;
     var sec = 0;
-    // function start() 
-    // {
 
-    // }
-    // start()
-}
+if(min == 2)
+    {
+        time.innerText = 0;
+        time2.innerText = 0;
+        var min = 0;
+        var sec = 0;
+    }
+    
+var count = setInterval(function () {
+    sec++;
+    time2.innerText = sec;
+    time.innerText = min;
+    if(sec == 59 && min <= 2)
+        {
+            min++;
+            time.innerText = min;
+            sec = 0;
+            time2.innerText = sec;
+        }
+            if(min == 2)
+                { 
+                    time2.innerText = 0 +'0'
+                    clearInterval(count)
+                }    
+    }, 1000)
+}     
 
 var getUser = localStorage.getItem("Data");
 if (getUser !== null) {
@@ -79,7 +103,10 @@ if (getUser !== null) {
 
 
 
-// ***************************
+
+// #######################
+
+
 var questions = [
     {
         question: 'What does HTML stand for?',
@@ -98,7 +125,7 @@ var questions = [
         correctOption: "The World Wide Web Consortium"
     },
     {
-        question: 'Choose the correct HTML element for the largest heading:',
+        question: 'Choose the correct HTML element for the largest heading?',
         option1:  '<heading>',
         option2:  '<h6>',
         option3:  '<h1>',
@@ -137,14 +164,6 @@ var questions = [
         option4:  '<am>',
         correctOption: "<em>"
     },
-    {
-        question: 'What is the correct HTML for creating a hyperlink?',
-        option1:  '<a>http://www.w3schools.com</a>',
-        option2:  '<a href="http://www.w3schools.com">W3Schools</a>',
-        option3:  '<a url="http://www.w3schools.com">W3Schools.com</a>',
-        option4:  '<a url="http://www.w3schools.com">W3Schools.com</a>',
-        correctOption: '<a href="http://www.w3schools.com">W3Schools</a>'
-    },
 ]
 
 var ques = document.getElementById("question");
@@ -152,20 +171,46 @@ var op1 = document.getElementById("op1");
 var op2 = document.getElementById("op2");
 var op3 = document.getElementById("op3");
 var op4 = document.getElementById("op4");
-// var score = document.getElementById("");
+var score = document.getElementById("score");
 var btn = document.getElementById("next-btn");
-var score = 0;
-// var ind = 0;
+var ansSelect = document.querySelectorAll(".answers")
+var QNo = document.getElementById("addQNo");
+var Qlen = document.getElementById("qlen")
+Qlen.innerText = questions.length;
+var sco = 0;
+var ind = 0;
 
+function clk() {
+    if(event.type === "click")
+        {
+            document.querySelectorAll(".answers").disabled = true;
+            if(event.target.innerText === questions[ind-1].correctOption)
+            sco = sco + 1;
+            console.log(questions[ind-1].correctOption);
+            score.innerText = sco;
+            btn.disabled = false;
+            }
+        }    
 function nextBtn() {
-        questions.forEach(function (data) {
-        // ques.innerHTML = data[ind].question;
-        // op1.innerHTML  = questions[ind].option1;
-        // op2.innerHTML  = questions[ind].option2;
-        // op3.innerHTML  = questions[ind].option3;
-        // op4.innerHTML  = questions[ind].option4;
-        console.log(data.question);   
-    })
-
+    btn.disabled =  true;
+    if(ind > questions.length-1)
+        {
+            clearInterval(count);
+            Swal.fire({
+                title: "Quiz result",
+                text: `your score ${score.innerText}`,
+                icon: "success"
+              })
+        }
+        else{
+            QNo.innerText = ind;
+            ques.innerText = questions[ind].question;
+            op1.innerText  = questions[ind].option1;
+            op2.innerText  = questions[ind].option2;
+            op3.innerText  = questions[ind].option3;
+            op4.innerText  = questions[ind].option4;
+            ind++;
+        }
 }
 nextBtn()
+

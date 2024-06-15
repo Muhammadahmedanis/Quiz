@@ -11,25 +11,26 @@
         <div>
             <div id="name">Student Name: <script>document.write(localStorage.getItem("n"))</script></div>
             <div class="users">
-                <div id="time">1:45</div>
-                <div id="score">Score: 0 / 5</div>
+                <div> <span id="min">0</span>: <span id="sec">00</span></div>
+                <div>Score: <span style="background-color: #CA8787; font-size: 25px; color: black;" id="score">0</span> / 7</div>
             </div>
         </div>
         <div>
             <p id="question"></p>
         </div>
-        <div>
-            <p class="answers" id="op1">A.</p>
-            <p class="answers" id="op2">B.</p>
-            <p class="answers" id="op3">C.</p>
-            <p class="answers" id="op4">D.</p>
+        <div onclick="clk()">
+            <button class="answers" id="op1">A.</button>
+            <button class="answers" id="op2">B.</button>
+            <button class="answers" id="op3">C.</button>
+            <button class="answers" id="op4">D.</button>
         </div>
         <div id="btn">
-            <p class="Qnum">0 out of 5 questions</p>
+            <p class="Qnum"> <span id="addQNo">0</span> out of <span id="qlen"></span> questions</p>
             <button onclick="nextBtn()" id="next-btn" disabled class="buttons-arounder">Next</button>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="app.js"></script>
 </body>
 </html>
