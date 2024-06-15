@@ -1,10 +1,9 @@
 .main{
     background-color: #CA8787;
     border-radius: 5px;
-    height: 550px;
     width: 450px;
     margin: 30px auto;
-    padding: 6px;
+    padding: 6px 16px;
 }
 
 #name{
@@ -12,7 +11,6 @@
     background-color: #E1ACAC;
     border-radius: 4px;
     height: 30px;
-    width: 430px;
     font-size: 20px;
     font-family: sans-serif;
     font-weight: 850;
@@ -53,8 +51,6 @@
     font-family: sans-serif;
     background-color: #E1ACAC;
     border-radius: 4px;
-    /* height: 50px; */
-    width: 430px;
     font-size: 18px;
     font-weight: 600;
     text-align: center;
@@ -64,10 +60,6 @@
     color: rgb(66, 63, 63);
 }
 .answers{
-    /* margin-left: 13px; */
-    /* height: 37px; */
-    /* background-color: rgba(172, 255, 47, 0.422); */
-    /* border: 2px solid black; */
     border-radius: 4px;
     width: 400px;
     font-size: 19px;

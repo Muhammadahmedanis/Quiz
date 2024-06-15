@@ -1,4 +1,3 @@
-
 var questions = [
     {
         question: 'What does HTML stand for?',
@@ -68,68 +67,64 @@ var btn = document.getElementById("next-btn");
 var ansSelect = document.querySelectorAll(".answers")
 var QNo = document.getElementById("addQNo");
 var Qlen = document.getElementById("qlen")
-Qlen.innerText = questions.length-1;
-var score = 0;
+Qlen.innerText = questions.length;
+var sco = 0;
 var ind = 0;
 
 
-// function cl() {
-//     var time = document.getElementById('min');
-//     var time2 = document.getElementById('sec');
-//     var min = 0;
-//     var sec = 0;
 
-// if(min == 2)
-//     {
-//         time.innerText = 0;
-//         time2.innerText = 0;
-//         var min = 0;
-//         var sec = 0;
-//     }
-    
-// var count = setInterval(function () {
-//     sec++;
-//     time2.innerText = sec;
-//     time.innerText = min;
-//     if(sec == 59 && min <= 2)
-//         {
-//             min++;
-//             time.innerText = min;
-//             sec = 0;
-//             time2.innerText = sec;
-//         }
-//             if(min == 2)
-//                 { 
-//                     time2.innerText = 0 +'0'
-//                     clearInterval(count)
-//                 }    
-//             }, 1000)
-// }
+var time = document.getElementById('min');
+var time2 = document.getElementById('sec');
+var min = 0;
+var sec = 0;
+
+if(min == 2)
+    {
+        time.innerText = 0;
+        time2.innerText = 0;
+        var min = 0;
+        var sec = 0;
+    }
+
+var timer;
+var count = setInterval(function () {
+sec++;
+time2.innerText = sec;
+time.innerText = min;
+if(sec == 59 && min <= 2)
+    {
+        min++;
+        time.innerText = min;
+        sec = 0;
+        time2.innerText = sec;
+    }
+    timer = time.innerText +':'+ time2.innerText;
+        if(min == 2)
+            { 
+                time2.innerText = 0 +'0'
+                clearInterval(count)
+            }    
+}, 1000)
+
+
 function clk() {
-    // console.log(ansSelect);
-    // console.log(event.target);
-    // console.log(event.type);
-    // console.log(ansSelect);
-    // for(var i = 0; i < ansSelect.length; i++)
-    //     {
-            // if(event.type === "click")
-            //     {
-            //         event.target.style.backgroundColor = "#FFB1B1";
-            //         btn.disabled = false;
-            //     }
-                // else
-                // {
-                //     event.target.style.backgroundColor = "#CA8787";
-                //     btn.disabled =  false;
-                // }
-    //     }   
-}    
+    if(event.type === "click")
+        {
+            document.querySelectorAll(".answers").disabled = true;
+            if(event.target.innerText === questions[ind-1].correctOption)
+            sco = sco + 1;
+            score.innerText = sco;
+            btn.disabled = false;
+            }
+        }    
 function nextBtn() {
+    btn.disabled =  true;
     if(ind > questions.length-1)
         {
+            clearInterval(count);
             Swal.fire({
                 title: "Quiz result",
-                text: "your score",
+                text: `your score ${score.innerText} and you completed your quiz in ${timer}`,
                 icon: "success"
               })
         }
@@ -144,3 +139,4 @@ function nextBtn() {
         }
 }
 nextBtn()
+
